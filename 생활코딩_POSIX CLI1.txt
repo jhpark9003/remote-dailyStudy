@@ -1,0 +1,28 @@
+# 생활코딩_POSIX CLI1
+
+
+         File            Directory
+Create  editor              mkdir
+Read    editor, cat, ls     ls
+Update  editor, mv          mv
+Delete  rm                  rm
+
+
+pwd         : print working directory
+/           : root directory
+~           : home directory
+cd          : change directory
+--help      : simple manual
+man command : manual
+ls -l       : list in long format
+touch       : make empty file
+.filename   : hidden file
+ls -a       : show all files
+mkdir       : make directory
+./          : current directory
+mv          : move (rename)
+rm -r       : remove directory
+relative path vs absolute path
+../         : parent directory
+
+POSIX CLI1 - 8. 파일생성과 읽기~
