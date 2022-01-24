@@ -1,0 +1,172 @@
+# 온라인T아카데미_프로그래밍_데이터 엔지니어_데이터베이스
+
+[1강] DBMS 기초
+ - DBMS의 기초
+ - RDBMS
+[2강] MySQL 설치 및 기본 사용법
+ - 윈도우용 MySQL 설치 & 실행
+ - 기본 DBMS 사용법
+[3강] SQL(DML) 1
+ - SQL의 이해와 종류
+ - CRUD 이해와 실습
+[4강] SQL(DML) 2
+ - 쿼리결과 중복제거(DISTINCT)
+ - 논리연산자(AND, OR, NOT)
+ - 논리연산자(IN, BETWEEN)
+ - 결과정렬(ORDER BY)
+[5강] SQL(DML) 3
+ - 결과값 일부 조회
+ - 집합함수(Aggregation Function)
+ - 유용한 함수
+[6강] SQL(DML) 4
+ - JOIN의 개념, 종류
+ - 별명(ALIAS)
+ - 뷰(View)
+[7강] SQL(DML) 5
+ - SELECT INTO
+ - INSERT INTO SELECT
+ - CASE... WHEN... END
+[8강] SQL(DML) 6
+ - LIKE 검색
+ - NULL값
+ - NULL함수
+ - GROUP BY/HAVING
+[9강] SQL(DML) 7
+ - 서브쿼리
+ - 집합연산
+[10강] SQL(DDL) 1
+ - 스키마 정의
+ - 자료형
+ - 제약조건
+[11강] SQL(DDL) 2
+ - 중복정보 제거
+ - 정규형
+ - 참조무결성
+[12강] SQL(DDL) 3
+ - 스키마 수정
+ - 스키마 삭제
+[13강] SQL(DCL)
+ - 권한 설정
+ - 역할 설정
+ - MySQL 원격접속 설정
+[14강] SQL Advanced 1
+ - INDEX
+[15강] SQL Advanced 2
+ - 메타데이터
+ - 캐릭터셋/콜레이션
+ - 스토리지 엔진
+[16강] SQL Advanced 3
+ - 데이터베이스 백업
+ - 데이터베이스 복원
+ - 데이터베이스 로그
+[17강] SQL Advanced 4
+ - 파티셔닝/샤딩
+ - 데이터베이스 복제
+[18강] SQL Advanced 5
+ - Full Text Search
+ - Bulk Insert
+[19강] SQL Advanced 6
+ - 트랜잭션 개념
+ - 락(Lock)
+ - 격리수준(Isolation)
+[20강] SQL Advanced 7
+ - 저장 프로시저(Stored Procedure)
+ - 트리거(Trigger)
+[21강] SQL Advanced 8
+ - 대형 데이터베이스 구축기술
+ - NoSQL
+
+
+1강 학습정리
+ - DBMS(Database management System)
+   - 데이터를 CRUD(생성, 수정, 섹자, 검색)하는 시스템
+   - 검색에 최적화(인덱스)
+   - 업데이트가 많은 경우 대안이 필요
+   - NoSQL
+ - RDBMS(Relational DBMS)
+   - 테이블 형태로 관리되는 DBMS의 한 형태
+   - SQL이라는 질의언어를 사용
+
+2강 학습정리
+ -
+   -
+   -
+   -
+   -
+ -
+   -
+   -
+   -
+   -
+
+3강 학습정리
+ -
+   -
+   -
+   -
+   -
+ -
+   -
+   -
+   -
+   -
+
+4강 학습정리
+ -
+   -
+   -
+   -
+   -
+ -
+   -
+   -
+   -
+   -
+
+5강 학습정리
+ -
+   -
+   -
+   -
+   -
+ -
+   -
+   -
+   -
+   -
+
+6강 학습정리
+ -
+   -
+   -
+   -
+   -
+ -
+   -
+   -
+   -
+   -
+
+7강 학습정리
+ -
+   -
+   -
+   -
+   -
+ -
+   -
+   -
+   -
+   -
+
+8강 학습정리
+ -
+   -
+   -
+   -
+   -
+ -
+   -
+   -
+   -
+   -

@@ -1,0 +1,107 @@
+[질문하는법]
+https://positivemh.tistory.com/297
+
+[DB 관련 사이트]
+[ORACLE]
+prodba 네이버 카페 | DBMS 전반
+https://cafe.naver.com/prodba
+
+dbian 네이버 카페 | 튜닝
+https://cafe.naver.com/dbian
+
+데이터와 사람들 네이버 카페 | 튜닝
+https://cafe.naver.com/dbstudydapsqlp
+
+조동욱님 블로그 | 튜닝
+https://dioncho.wordpress.com/
+
+오동규님 블로그 | 튜닝
+https://scidb.tistory.com/
+
+TunA님 블로그 | 튜닝
+https://hrjeong.tistory.com/
+
+태랑님 블로그 | DBMS 전반
+https://hoing.io
+
+아무도없는세계님 블로그 | DBMS 전반
+http://dinggur.tistory.com
+
+DBA의 정석님 블로그 | DBMS전반
+http://haisins.epac.to
+
+내맘대로긍정님 블로그 | DBMS전반
+https://positivemh.tistory.com
+
+devDo님 블로그 | 튜닝
+https://blog.naver.com/oracledo/
+
+DATA ON-AIR(데이터온에어) | DBMS 전반
+https://dataonair.or.kr/db-tech-reference/d-guide/sql/
+
+구루비 | DBMS 전반
+http://www.gurubee.net/
+
+구루비 스터디 | DBMS 전반
+http://wiki.gurubee.net/dashboard.action
+
+데이터포럼 | 설치 가이드
+https://dataforum.io/display/ORCL/Database
+
+DB CAFE | DBMS 전반
+http://dbcafe.co.kr/wiki/index.php/%EB%8C%80%EB%AC%B8
+
+굿어스데이터 | DBMS 전반
+https://blog.goodusdata.com/category/%EB%8D%B0%EC%9D%B4%ED%84%B0%20Tech
+
+유건데이타 | DBMS 전반
+http://dbtech.co.kr/bbs/?bo_c=10
+
+Techdata VINA 지식 공유 | DBMS 전반
+https://otsteam.tistory.com
+
+[SQL Server]
+SQL Tag
+https://cafe.naver.com/sqlmvp
+
+SQLer
+http://www.sqler.com/
+
+jevida님 블로그
+http://sqlmvp.kr/
+
+보미네님 블로그
+https://sqlsql.tistory.com/
+
+라이고님 블로그
+https://laigo.kr/
+
+
+
+링크트리를 통해 오픈 인프라 엔지니어 그룹으로 연결해보세요. 
+o3g.org
+https://linktr.ee/o3g
+
+오픈 인프라 엔지니어 그룹 슬랙
+https://invite.o3g.org/
+
+오픈 IT인프라 정보공유방
+https://open.kakao.com/o/grWNkYT
+
+닷닷님 블로그
+https://blog.naver.com/tpgpfkwkem0
+
+uzi님 블로그
+https://wooseok-uzi.tistory.com/
+
+라라님 블로그
+https://rastalion.me/
+
+루이스킴님 블로그
+https://hyunki1019.tistory.com
+
+Min님 블로그
+Http://minsql.com
+
+디비딥님 블로그
+https://blog.naver.com/sinjoker
