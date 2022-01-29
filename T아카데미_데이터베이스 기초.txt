@@ -77,7 +77,7 @@
  - NoSQL
 
 
-1강 학습정리
+1강 DBMS 기초
  - DBMS(Database management System)
    - 데이터를 CRUD(생성, 수정, 섹자, 검색)하는 시스템
    - 검색에 최적화(인덱스)
@@ -87,86 +87,90 @@
    - 테이블 형태로 관리되는 DBMS의 한 형태
    - SQL이라는 질의언어를 사용
 
-2강 학습정리
+2강 MySQL 설치 및 기본 사용법
+ - MySQL 다운로드
+   - My윈도우용 SQL Community Edition 다운로드
+ - MySQL 설치
+   - 관리자 패스워드 등록
+ - MySQL 콘솔모드 로그인
+   - CLI(Command Line Interface) 방식
+ - MySQL Workbench 로그인
+   - GUI(Graphic User Interface) 방식
+ - WORLD DB
+   - show databases;
+   - use world;
+   - show tables;
+   - desc city;
+   - select * from city;
+
+3강 SQL(DML) 1
  - 
-   -
-   -
-   -
-   -
- -
-   -
-   -
-   -
-   -
+   - 
+   - 
+   - 
+   - 
+ - 
+   - 
+   - 
+   - 
+   - 
 
-3강 학습정리
- -
-   -
-   -
-   -
-   -
- -
-   -
-   -
-   -
-   -
+4강 SQL(DML) 2
+ - 
+   - 
+   - 
+   - 
+   - 
+ - 
+   - 
+   - 
+   - 
+   - 
 
-4강 학습정리
- -
-   -
-   -
-   -
-   -
- -
-   -
-   -
-   -
-   -
+5강 SQL(DML) 3
+ - 
+   - 
+   - 
+   - 
+   - 
+ - 
+   - 
+   - 
+   - 
+   - 
 
-5강 학습정리
- -
-   -
-   -
-   -
-   -
- -
-   -
-   -
-   -
-   -
+6강 SQL(DML) 4
+ - 
+   - 
+   - 
+   - 
+   - 
+ - 
+   - 
+   - 
+   - 
+   - 
 
-6강 학습정리
- -
-   -
-   -
-   -
-   -
- -
-   -
-   -
-   -
-   -
+7강 SQL(DML) 5
+ - 
+   - 
+   - 
+   - 
+   - 
+ - 
+   - 
+   - 
+   - 
+   - 
 
-7강 학습정리
- -
-   -
-   -
-   -
-   -
- -
-   -
-   -
-   -
-   -
-
-8강 학습정리
- -
-   -
-   -
-   -
-   -
- -
-   -
-   -
-   -
-   -
+8강 SQL(DML) 6
+ - 
+   - 
+   - 
+   - 
+   - 
+ - 
+   - 
+   - 
+   - 
+   - 
