@@ -104,16 +104,14 @@
    - select * from city;
 
 3강 SQL(DML) 1
- - 
-   - 
-   - 
-   - 
-   - 
- - 
-   - 
-   - 
-   - 
-   - 
+ - DML(Data Manipulation Language)
+   - SQL 종류의 하나로, 데이터의 삽입(INSERT), 삭제(DELETE), 갱신(UPDATE) 등을 처리함
+ - CRUD(Create, Retrieve, Update, Delete)
+   - 기본적인 데이터 처리 기능인 Create(생성), Read(읽기), Update(갱신), Delete(삭제)를 묶어서 일컫는 말
+      -> SELECT 컬럼명 FROM 테이블명 WHERE 조건절;
+      -> INSERT INTO 테이블명(컬럼명) values (값);
+      -> UPDATE 테이블명 set 컬럼명=값, ... where 조건절;
+      -> DELETE from 테이블명 where 조건절;
 
 4강 SQL(DML) 2
  - 
