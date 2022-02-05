@@ -1,3 +1,35 @@
+[즐겨찾기]
+데이터 아키텍트(김기창)
+https://cafe.naver.com/iamda
+
+데이터 프로페셔널(김기창)
+https://dataprofessional.tistory.com/
+
+데이터와사람들(서윤식)
+https://cafe.naver.com/dbstudydapsqlp
+
+DBian 포럼(조시형)
+https://cafe.naver.com/dbian/
+
+데이터 전문가 포럼
+https://cafe.naver.com/sqlpd
+
+DAP, DASP 자격증 카페
+https://cafe.naver.com/onlydap
+
+DATA ON-AIR
+https://dataonair.or.kr/
+
+데이터자격검정시험
+https://www.dataq.or.kr/www/main.do
+
+영우글로벌러닝
+http://www.ycampus.co.kr/edu/class.asp?ca1=A2&ca2=A201
+
+구루비
+http://www.gurubee.net/
+
+
 [질문하는법]
 https://positivemh.tistory.com/297
 
