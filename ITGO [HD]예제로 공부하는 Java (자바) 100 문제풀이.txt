@@ -155,7 +155,9 @@ cf) 파이썬 언어[인터프리터 언어] : 파이썬 코드 작성 -> 파이
   -> 초기값이 0인 빈 정수형 배열 ar을 만들고, ar[target[i]]++;
 - while 반복문과 continue
   -> 탈출 빠져나오는 조건식이 반복문 맨 끝과 continue 전에 필요하다.
-- 
+- 최대값/최소값
+  -> int max나 min 지정 후 if(max < ar[i]) max=ar[i];
+
 
 
 
