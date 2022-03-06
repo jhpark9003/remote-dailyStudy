@@ -1,0 +1,20 @@
+COS PRO 대비 개인정리용
+ 
+ # Part8. 알고리즘
+- Integer 최소값, 최대값 : Integer.MIN_VALUE;, Integer.MAX_VALUE;
+- 랜덤 정수(0~9) : (int)(Math.random()*10);
+- Arrays.sort(배열명); // import java.util.Arrays;
+- 내림차순이거나 또는 원하는대로 정렬의 조건을 설정해서 하고자 할 때에는 기본형(Primitive Type)의 배열에는 적용이 안된다. -> 따라서, 래퍼 클래스로 만들어서 적용해야 한다. ex) Integer[] arrays
+- Arrays.sort(배열명, Collections.reverseOrder()); // import java.util.Collections
+
+ # Part9. 자격증(COS PRO 2급)
+- 빈도 수 패턴
+  -> 초기값이 0인 빈 정수형 배열 ar을 만들고, ar[target[i]]++;
+- while 반복문과 continue
+  -> 탈출 빠져나오는 조건식이 반복문 맨 끝과 continue 전에 필요하다.
+- 최대값/최소값
+  -> int max나 min 지정 후 if(max < ar[i]) max=ar[i];
+- 배열에서 가장 큰 값인 최대값을 반복문 사용없이
+  -> 정렬(sort) 함수 이용
+  -> import java.util.Arrays;
+  -> ar[0]과 ar[ar.length-1]이 최소, 최대값
