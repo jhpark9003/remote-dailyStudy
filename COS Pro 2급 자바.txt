@@ -78,6 +78,48 @@
 - 후위 연산자
   - 해당 변수에 대한 명령을 먼저 실행한 후에 변수 뒤에 붙은 증감연산자에 의한 계산을 수행
 
+ # 알파벳 별 점수 부여
+- answer += card.charAt(i) - 'a' + 1; // a와의 차이
+
+ # 2차원 배열에서 개별 항목의 위치
+- dy = {-1, 1, 0, 0} : 상하좌우 항목들을 가져오기 위한 행 인덱스 증감값
+- dx = {0, 0, -1, 1} : 상하좌우 항목들을 가져오기 위한 열 인덱스 증감값
+
+ # String to int, int to String
+- Integer.parseInt(String)
+- Integer.toString(int)
+
+ # 주어진 수 거꾸로 뒤집기
+- for(int i = 0; i < digit; i++) {
+    int temp = number % 10;
+    number = number / 10;
+    ret = ret * 10 + temp;
+  }
+
+ # 최대공약수
+- for(int i=min; i>=1; i--) {
+    if(num1%i==0 && num2%i==0) {
+        answer = i;
+        break;
+    }
+  }
+
+ # 최소공배수
+- for(int i=1; i<=max; i++) {
+    if((min*i)%max==0) {
+        answer = min*i;
+        break;
+    }
+  }
+
+- for(int i=max; i<=min*max; i++) {
+    if(i%min==0 && i%max==0) {
+        answer = i;
+        break;
+    }
+  }
+
+
 
 
 
