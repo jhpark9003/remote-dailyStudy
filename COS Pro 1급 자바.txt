@@ -1,14 +1,33 @@
 ### COs Pro(코딩전문가자격시험) 1급 자바 ###
 
 
- # 새로시작~~
-- 새로시작~~
-- ddddddddd
-- ㅇㅇㅇㅇㅇ
+ # 이클립스 단축키
+- ctrl + +,-   : 폰트 크기
+- ctrl + D     : 한 줄 삭제
+- ctrl + /     : 주석 토글
+- ctrl + space : 자동 완성
+- ctrl + i     : 자동 들여쓰기
+- 이클립스 에러난 클래스 위에서 ctrl + shift + m(o) 자동으로 import됨
+- sysout -> ctrl + space  : System.out.println()
 
+ # 기본 자료형 int 크기와 범위
+- int : 4byte, -2,147,483,648 ~ 2,147,483,647
+- 자바 기본 정수 연산은 int
 
+ # 배열 초기화
+- 배열 초기화 : Arrays.fill(배열, 초기값);
+- 배열 정렬(오름차순) : Arrays.sort(배열); / Arrays.sort(배열, 시작 인덱스, 끝 인덱스);
+- 배열 정렬(내림차순) : Arrays.sort(배열, Collections.reverseOrder()); / Wrapper 타입만 가능
 
-
+ # 
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 
