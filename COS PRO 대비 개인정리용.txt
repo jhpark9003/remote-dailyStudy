@@ -18,3 +18,13 @@ COS PRO 대비 개인정리용
   -> 정렬(sort) 함수 이용
   -> import java.util.Arrays;
   -> ar[0]과 ar[ar.length-1]이 최소, 최대값
+ 
+ # WIRE
+- ArrayList<Integer> list = new ArrayList<Integer>();
+  -> list.add();
+  -> list.size()
+  -> list.get(i);
+  -> Collections.sort(list);
+
+
+
