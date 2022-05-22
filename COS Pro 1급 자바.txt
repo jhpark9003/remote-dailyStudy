@@ -19,10 +19,24 @@
 - 배열 정렬(오름차순) : Arrays.sort(배열); / Arrays.sort(배열, 시작 인덱스, 끝 인덱스);
 - 배열 정렬(내림차순) : Arrays.sort(배열, Collections.reverseOrder()); / Wrapper 타입만 가능
 
- # 
--
--
--
+ # 오버라이딩
+- Child c1 = new Child();
+  c1.sing(); // 랩을 잘한다.
+
+  Dad c2 = new Child();
+  c2.sing(); // 랩을 잘한다.
+
+  부모의 sing()을 호출하려면 자식의 메소드에서 super.sing() 호출해야 한다.
+
+ # 상속, 구현 키워드
+- 상속 : extends
+- 구현 : implements
+
+
+
+
+
+
 -
 -
 -
