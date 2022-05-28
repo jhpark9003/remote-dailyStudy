@@ -1,0 +1,85 @@
+### DB 관련 지식 ###
+
+# 구글링 : database ranking 2022
+순위        DBMS            Database Model
+1. Oracle               - Relational, Multi-model
+2. MySQL                - Relational, Multi-model
+3. Microsoft SQL Server - Relational, Multi-model
+4. PostgreSQL           - Relational, Multi-model
+5. MongoDB              - Document, Multi-model
+6. Redis                - Key-value, Multi-model
+7. IBM Db2              - Relational, Multi-model
+8. Elasticsearch        - Search engine, Multi-model
+9. Microsoft Access     - Relational
+10. SQLite              - Relational
+
+ # 공식 문서 읽는 법
+- Syntax를 보자.
+- 네모는 키워드. 그대로 써야한다.
+- 타원은 바꿔야 하는 부분.
+
+
+
+
+ # 
+- 관계형 데이터베이스는 표(table)를 다룬다는 느낌으로 사용하면 된다.
+- 표가 많아지면 연관된 표끼리 그룹핑을 해서 디렉토리를 만든다. 디렉토리 역할을 하는 그룹을 '데이터베이스', '스키마' 라고 한다.
+- 데이터베이스는 데이터베이스 시스템을 전체를 얘기하는 포괄적인 표현으로도 사용하고, 서로 연관된 표들을 그룹핑해서 이름 붙인 일종의 폴더같은 역할을 말하기도 한다.
+
+ # Every table in the database needs to have a single theme
+- 모든 표는 하나의 주제만 가져야 한다.
+
+ # 
+- 한 테이블에 모든 데이터를 넣어놓으면 보기에는 편하다. 하지만 수정이 어렵다.
+- 정규화를 하면 수정이 편하다. 하지만 보기에는 어렵다. 그래서 JOIN이 있다.
+
+ #
+- 실습용 SQL - https://github.com/egoing/sql-join
+- JOIN의 종류 - https://sql-joins.leopard.in.ua/
+- left join과 inner join이 대부분
+- 조인할 때 왼쪽에 inner, left, outer 안적으면 inner join이다. inner join을 하면 null 행이 없다.
+SELECT * FROM TableA a LEFT JOIN TableB b ON a.Key = b.Key;
+SELECT * FROM TableA a LEFT JOIN TableB b ON a.Key = b.Key WHERE b.Key IS NULL;
+SELECT * FROM TableA a RIGHT JOIN TableB b ON a.Key = b.Key;
+SELECT * FROM TableA a RIGHT JOIN TableB b ON a.Key = b.Key WHERE a.Key IS NULL;
+SELECT * FROM TableA a FULL OUTER JOIN TableB b ON a.Key = b.Key;
+SELECT * FROM TableA a FULL OUTER JOIN TableB b ON a.Key = b.Key WHERE a.Key IS NULL OR b.Key IS NULL;
+SELECT * FROM TableA a INNER JOIN TableB b ON a.Key = b.Key;
+
+
+
+
+
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 

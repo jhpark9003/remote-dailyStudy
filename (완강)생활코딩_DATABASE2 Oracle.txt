@@ -1,0 +1,96 @@
+# (완강)생활코딩_DATABASE2 Oracle
+
+
+오라클 데이터베이스에서 우리가 최종적으로 하려고 하는 일은 표에다가 정보를 기록하고 기록된 정보를 읽는 것이다.
+
+서로 연관된 표를 그룹핑하기 위한 어떤 체계가 필요한데, 그러한 체계를 스키마라고 한다. 일종의 디렉토리 같은 것이다.
+스키마의 조금 더 정확한 정의는 그 스키마에 속한 표들을 설명하는 것, 정의하는 것을 스키마라고 한다.
+
+각각의 사용자는 자신이 관리하는 테이블에 접속할 수 있다.
+사용자를 만들면 스키마가 생성된다.
+
+
+ # 구글 검색
+- oracle sql reference ~~~
+- oracle sql reference create user
+
+ # 공식 문서 읽는 법
+- Syntax를 보자.
+- 네모는 키워드. 그대로 써야한다.
+- 타원은 바꿔야 하는 부분.
+
+ # 사용자 생성
+- sys AS SYSDBA 로 로그인
+- CREATE USER egoing IDENTIFIED BY 111111;
+- GRANT DBA TO egoing;
+- sqlplus로 egoing 로그인
+
+ # 테이블 생성
+- create table sql references oracle 검색
+- CREATE TABLE topic (
+    id          NUMBER          NOT NULL,
+    title       VARCHAR2(50)    NOT NULL,
+    description VARCHAR2(4000),
+    created     DATE            NOT NULL
+  );
+
+- SELECT *
+  FROM DBA_TABLES
+  WHERE OWNER = 'egoing';
+
+ # 행 추가
+- INSERT INTO topic
+    (id, title, description, created)
+    VALUES
+    (1,'ORACLE','ORACLE is...',SYSDATE);
+- COMMIT;
+
+ # 행 읽기
+- SELECT * FROM topic;
+- SELECT id, title, created FROM topic;
+- SELECT * FROM topic WHERE id = 1;
+- SELECT * FROM topic WHERE id > 1;
+- SELECT id, title, created FROM topic WHERE id = 1;
+- SELECT * FROM topic ORDER BY id DESC;
+- SELECT * FROM topic ORDER BY id ASC;
+- SELECT * FROM topic ORDER BY title ASC;
+- SELECT * FROM topic OFFSET 1 ROWS; -- OFFSET은 데이터를 어디부터 가져올 것이냐.
+- SELECT * FROM topic OFFSET 2 ROWS;
+- SELECT * FROM topic OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY; -- 0번째 행부터 1개의 행만 가져온다.
+
+ # 행 수정
+- UPDATE topic SET title = 'MSSQL', description = 'MSSQL is ...'
+  WHERE id = 3;
+
+ # 행 삭제
+- DELETE FROM topic
+  WHERE id = 3;
+
+ # PRIMARY KEY(기본키)
+- 식별자는 유일해야 한다.
+- DROP TABLE topic;
+- CREATE TABLE topic (
+    id          NUMBER          NOT NULL,
+    title       VARCHAR2(50)    NOT NULL,
+    description VARCHAR2(4000),
+    created     DATE            NOT NULL,
+
+    CONSTRAINT PK_TOPIC PRIMARY KEY(id)
+  );
+
+ # SEQUENCE
+- CREATE SEQUENCE SEQ_TOPIC;
+- INSERT INTO topic
+    (id, title, description, created)
+    VALUES
+    (SEQ_TOPIC.NEXTVAL,'ORACLE','ORACLE is...',SYSDATE);
+- SELECT SEQ_TOPIC.CURRVAL FROM DUAL;
+- 시퀀스는 항상 PK와 패밀리라고 생각하자. 두가지는 같이 쓸 때 더욱 강력해진다.
+
+ # JOIN
+- 인간이 수동으로 할 수 있는 일만 컴퓨터가 처리할 수 있다.
+- SELECT * FROM topic LEFT JOIN author ON topic.author_id = author.id;
+- SELECT T.id TOPIC_ID, title, name
+  FROM topic T LEFT JOIN author A
+                      ON T.author_id = A.id
+  WHER T.id = 1;
