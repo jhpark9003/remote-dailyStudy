@@ -1,0 +1,444 @@
+ ## 예제로 배우는 ORACLE 11g ##
+https://wikidocs.net/book/550
+
+ # .bash_profile
+alias ss = 'sqlplus / as sysdba'
+
+ # 홑따옴표, 쌍따옴표
+'' : 문자열을 감싸주는 기호(한가지)
+"" : 테이블 이름, 컬럼명 등을 감싸주는 기호
+
+ # DB가 잘 기동되었는지 상태 확인
+SELECT instance_name, status FROM v$instance;
+
+ # SQL*PLUS 명령어
+list(l)  : 명령어 버퍼의 내용을 보여줌
+/        : SQL 버퍼에 내장된 쿼리문(가장 최근에 실행한 쿼리문)을 실행
+run(r)   : SQL 버퍼 내의 내용을 보여주고 실행하는 명령어
+edit(ed) : SQL 버퍼 내의 내용을 보여주고 편집할 수 있도록 한다.
+host     : Oracle을 종료하지 않고 OS 명령을 수행할 수 있도록 OS환경으로 잠시 빠져나갈 수 있도록 하는 명령어.(되돌아오려면 exit)
+save     : SQL 버퍼 내의 현재 내용을 실제 파일로 저장하는 명령어
+@        : SQL 파일에 저장된 내용을 실행하는 명령어. 확장자가 .sql인 파일에 저장되어 있는 쿼리문을 실행
+SPOOL    : 오라클 화면을 갈무리하여 파일로 저장하는 명령어
+DESC TB  : 테이블의 구조를 확인하기 위한 명령어
+
+ #
+SELECT, WHERE, =, >, <, >=, <=, <>, !=, ^=, AND, OR, NOT, BETWEEN AND, IN
+LIKE %, LIKE +, ESCAPE(\), NOT LIKE
+IS NULL, IS NOT NULL
+
+ #
+ORDER BY ASC, DESC
+ASC(오름차순) : 숫자 - 작은 값부터 정렬
+             문자 - 사전 순서로 정렬
+			 날짜 - 빠른 날짜 순서로 정렬
+			 NULL - 가장 마지막에 나옴
+
+ #
+DISTINCT : 동일한 데이터 값들이 중복되어 출력되지 않도록 사용한다.
+
+ # DUAL 테이블의
+한 행으로 결과를 출력하기 위한 테이블이다.
+산술 연산이나 가상 컬럼 등의 값을 한번만 출력하고 싶을 때 많이 사용한다.
+ex) SEELCT SYSDATE FROM DUAL;
+
+ # 숫자 함수
+ABS   : 절대값을 구하는 함수
+FLOOR : 소수점 아래를 버리는 함수
+ROUND : 특정 자릿수에서 반올림하는 함수
+TRUNC : 특정 자릿수에서 잘라내는 함수
+MOD   : 나누기 연산을 한 후 나머지 결과로 되돌려주는 함수
+
+ # 문자 처리 함수
+UPPER       : 대문자로 변환하는 함수
+LOWER       : 소문자로 변환하는 함수
+INITCAP     : 이니셜만 대문자로 변환하는 함수
+LENGTH      : 문자 길이를 구하는 함수
+LENGTHB     : 바이트 수를 알려주는 함수
+INSTR       : 특정 문자의 위치를 구하는 함수
+SUBSTR      : 대상 문자열이나 컬럼의 자료에서 시작 위치부터 선택 개수만큼의 문자를 추출
+SUBSTRB     : 명시된 개수만큼의 문자가 아닌 바이트 수를 잘라낸다.
+LPAD/RPAD   : 특정 기호로 채우는 함수
+LTRIM/RTRIM : 공백 문자를 삭제하는 함수
+TRIM        : 특정 문자를 잘라내는 함수
+
+ # 날짜 함수
+DATE(날짜)형에 사용하는 함수
+결과값은 날짜 또는 기간을 얻는다. 기간은 주로 일 단위로 계산한다.
+ - 날짜 + 숫자 : 그 날짜로부터 그 기간만큼 지난 날짜를 계산
+ - 날짜 - 숫자 : 그 날짜로부터 그 기간만큼 이전 날짜를 계산
+ - 날짜 + 날짜 : 두 날짜 사이의 기간을 계산
+
+SYSDATE : 현재 날짜를 반환하는 함수
+ - SYSDATE+1 은 내일의 날짜를 구한다.
+
+MONTHS_BETWEEN : 두 날짜 사이의 개월수를 구하는 함수
+ADD_MONTHS : 특정 개월 수를 더한 날짜를 구하는 함수
+NEXT_DAY : 해당 날짜부터 시작하여 명시된 요일을 만나면, 해당되는 날짜를 반환하는 함수
+LAST_DAY : 해당 달의 마지막 날짜를 반환하는 함수
+
+ # 행 변환 함수(숫자형, 문자형, 날짜형)
+        <- TO_NUMBER           <- TO_CHAR 
+- Number             Character            Date
+          TO_CHAR ->           TO_DATE ->
+
+ # NULL을 다른 값으로 변환하는 NVL 함수
+NVL : NULL을 0 또는 다른 값으로 변환하기 위해서 사용하는 함수
+ - NULL과 산술 연산을 수행할 시 결과가 NULL값이 되기 때문에 NVL함수를 통해 0으로 변환 후 산술 연산 수행
+
+ # 선택을 위한 DECODE 함수 명령어
+여러가지 경우에 대해서 선택할 수 있도록 하는 기능을 제공한다.(SWITCH CASE문과 같은 기능이다.)
+
+ # 조건에 따라 서로 다른 처리가 가능한 CASE 함수
+여러가지 경우에서 하나를 선택하는 함수
+DECODE 함수는 조건이 일치(=비교 연산자)하는 경우에 대해서만 적용하지만 ㅊASE 함수는 다양한 비교 연산자를 이용하여 조건 제시 및 범위 지정할 수 있다.
+중첩 IF ELSE와 유사한 구조이다.
+
+ # 그룹 함수
+하나 이상의 행을 그룹으로 묶어 연산하여, 하나의 결과를 나타내는 함수
+ - 14개의 행에 대해서 단일행 함수의 결과는 14개의 행으로 구해짐
+ - 14개의 행에 대해서 복수행 함수의 결과는 1개의 행으로 구해짐
+그룹 함수는 다른 연산자와는 달리 해당 컬럼 값이 NULL인 것은 제외하고 계산한다.
+
+SUM : 해당 컬럼 값들에 대한 총합을 구하는 함수
+AVG : 해당 컬럼 값에 대해 평균을 구하는 함수
+MAX : 지정한 컬럼 값 중에서 최대값을 구하는 함수
+MIN : 해당 컬럼 값들의 최소값을 구하는 함수
+
+SELECT MAX(SAL), MIN(SAL) FROM DMP;
+SELECT ENAME, MAX(SAL), MIN(SAL) FROM EMP; -- 오류
+  -> 그룹 함수의 결과값은 하나인데, 그룹 함수를 적용하지 않은 단순 컬럼의 로우의 개수는 14개이기 때문에 산출되는 로우의 수가 달라 둘을 매치 시킬 수 없다.
+
+COUNT : 테이블에서 조건을 만족하는 행위 개수를 반환하는 함수
+ - COUNT 함수에 특정 컬럼을 기술하는 경우 해당 컬럼 값을 갖고 있는 로우의 개수를 계산하여 반환
+ - COUNT 함수는 NULL값에 대한 개수를 세지 않는다.
+
+ # GROUP BY 절
+특정 컬럼을 기준으로 그룹화하여 테이블에 존재하는 행동을 그룹별로 구분하기 위해 사용
+그룹 함수를 쓰되, 어떤 컬럼값을 기준으로 그룹 함수를 적용할지 기술해야 한다
+
+ # HAVING 절
+GROUP BY 절에 의해 생성된 결과값 중 원하는 조건에 부합하는 자료만 보고자 할 때 사용
+ - WHERE
+   -> 조건을 사용하여 결과를 제한
+   -> 테이블에서 특정 조건에 부합하는 자룜나을 검색할 때 사용
+   -> 단순 컬럼
+ - HAVING
+   -> 그룹의 결과를 제한
+   -> 그룹함수를 적용해서 나온 결과값 중에서 원하는 조건에 부합하는 자료만 산출할 때 사용
+   -> 그룹 함수
+
+ # 자동으로 소계/합계를 구해주는 함수
+ROLLUP, CUBE
+
+ # 계층형 쿼리
+CONNECT BY 키워드
+
+ # 새롭게 추가된 함수로 쿼리문 만들고 결과 보기
+LISTAGG
+PIVOT
+RANK
+
+ # 조인
+INNER JOIN
+ - EQUI JOIN
+ - NATURAL JOIN
+ - NON EQUI JOIN
+ - SELF JOIN
+OUTER JOIN
+ - LEFT OUTER JOIN
+ - RIGHT OUTER JOIN
+ - FULL OUTER JOIN
+
+ # 서브 쿼리
+단일행 서브 쿼리
+다중행 서브 쿼리
+
+ # 테이블 구조를 정의하는 CREATE TABLE
+CREATE TABLE EMP (EMPNO NUMBER(4), ENAME VARCHAR2(20));
+CREATE TABLE EMP02 AS SELECT * FROM EMP;
+CREATE TABLE EMP03 AS SELECT * FROM EMP WHERE 1=0; -- 테이블 구조만 복사
+
+ # 테이블 구조를 변경하는 ALTER TABLE
+ALTER TABLE EMP ADD (JOB VARCHAR2(9));
+ALTER TABLE EMP MODIFY (JOB VARCHAR2(30));
+ALTER TABLE EMP DROP COLUMN JOB;
+SET UNUSED : 테이블에 저장된 내용이 많을 경우 해당 테이블에서 컬럼을 삭제하려면 오래걸리면서 락(LOCK)이 발생한다. SET UNUSED 옵션은 컬럼의 사용을 논리적으로 제한할 뿐 실제로 삭제하지는 않기 때문에 작업시간동안 락(LOCK)이 걸리지 않는다.
+ - ALTER TABLE EMP SET UNUSED(JOB);
+ - 이후 사용빈도가 가장 낮은 시간에 삭제 작업을 진행하면 된다. ALTER TABLE EMP DROP UNUSED COLUMNS;
+
+ # 테이블 구조를 제거하는 DROP TABLE
+삭제하고자 하는 테이블의 기본키나 고유키를 다른 테이블에서 참조해서 사용하는 경우에는 해당 테이블을 제거할 수 없다.
+이러한 경우에는 참조하는 테이블들을 먼저 제거한 후에 해당 테이블을 삭제해야 한다.
+DROP TABLE EMP;
+
+ # 테이벌의 모든 로우를 제거하는 TRUNCATE TABLE
+DROP TABLE은 테이블의 존재 자체가 없어져 구조가 남지 않는 반면 TRUNCATE TABLE은 테이블은 존재하면서 데이터의 내용만 제거하기 때문에 구조가 남아있다.
+TRUNCATE TABLE EMP;
+
+ # 테이블명을 변경하는 RENAME
+RENAME EMP TO EMP02;
+
+ # DELETE, TRUNCATE, DROP 명령어의 차이점
+DELETE, TRUNCATE, DROP 명령어는 모두 삭제하는 명령어이지만 중요한 차이점이 있다.
+ - DELETE 명령어는 데이터는 지워지지만 테이블 용량은 줄어들지 않는다. 원하는 데이터만 지울 수 있다. 삭제 후 잘못 삭제한 것을 되돌릴 수 없다.
+ - TRUNCATE 명령어는 용량이 줄어들고, 인덱스 등도 모두 삭제된다. 테이블은 삭제하지는 않고, 데이터만 삭제한다. 한꺼번에 다 지워야 한다. 삭제 후 절대 되돌릴 수 없다.
+ - DROP 명령어는 테이블 전체를 삭제, 공간, 객체를 삭제한다. 삭제 후 절대 되돌릴 수 없다.
+
+ # 데이터 딕셔너리와 데이터 딕셔너리 뷰
+DBA_데이터딕셔너리 : 데이터베이스 관리자만 접근 가능한 객체 등의 정보를 조회할 수 있다.
+DBA는 모두 접근 가능하므로, 결국 DB에 있는 모든 객체에 관한 조회를 한다.
+ - SELECT OWNER, TABLE_NAME FROM DBA_TABLES;
+
+ # INSERT 명령문
+INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (10, 'ACCOUNTING', 'SEOUL');
+INSERT INTO DEPT VALUES (10, 'ACCOUNTING', 'SEOUL');
+INSERT INTO DEPT02 SELECT * FROM DEPT;
+
+ # 다중 테이블에 다중행 입력하기
+INSERT ALL INTO EMP_HIR VALUES (EMPNO, ENAME, HIREDATE) INTO EMP_MGR VALUES (EMPNO, ENAME, MGR) SELECT EMPNO, ENAME, HIREDATE, MGR FROM EMP WHERE DEPNO = 20;
+ - INSERT INTO EMP_HIR SELECT EMPNO, ENAME, HIREDATE FROM EMP WHERE DEPTNO = 20;
+ - INSERT INTO EMP_MGR SELECT EMPNO, ENAME, MGR FROM EMP WHERE DEPTNO = 20;
+
+INSERT ALL WHEN HIREDATE > '1982/01/01' THEN INTO EMP_HIR VALUES (EMPNO, ENAME, HIREDATE)
+           WHEN SAL >= 2000 THEN INTO EMP_SAL VALUES (EMPNO, ENAME, SAL)
+    SELECT EMPNO, ENAME, HIREDATE, SAL FROM EMP;
+
+ # UPDATE 명령문
+UPDATE EMP SET DEPTNO = 40 WHERE DEPTNO = 10;
+UPDATE DEPT SET LOC = (SELECT LOC FROM DEPT WHERE DEPTNO = 40) WHERE DEPTNO = 20;
+
+ # DELETE 명령문
+DELETE FROM DEPT WHERE DEPTNO = 30;
+DELETE FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE DNAME = 'SALES');
+
+ # MERGE 명령문
+구조가 같은 두 개의 테이블을 하나의 테이블로 합치는 기능을 하는 명령문
+ - 기존 테이블에 자료가 존재하는 경우 : 새로운 값으로 갱신(UPDATE)
+ - 새로운 행으로 추가(INSERT)
+MERGE INTO EMP01 USING EMP02 ON (EMP01.EMPNO = EMP02.EMPNO)
+      WHEN MATCHED     THEN UPDATE SET EMP01.ENAME = EMP02.ENAME, EMP01.JOB = EMP02.JOB, EMP01.MGR = EMP02.MGR, EMP01.HIREDATE = EMP02.HIREDATE, EMP01.SAL = EMP02.SAL, EMP01.COMM = EMP02.COMM, EMP01.DEPTNO = EMP02.DEPTNO
+	  WHEN NOT MATCHED THEN INSERT VALUES (EMP02.EMPNO, EMP02.ENAME, EMP02.JOB, EMP02.MGR, EMP02.HIREDATE, EMP02.SAL, EMP02.COMM, EMP02.DEPTNO);
+
+ # 트랜잭션
+데이터베이스 내에서 하나의 그룹으로 처리되어야 하는 명령문들을 모아놓은 작업 단위
+
+ # 자동 COMMIT
+DDL문에는 CREATE, ALTER, DROP, RENAME, TRUNCATE 등이 있는데 이들 모두는 자동으로 COMMIT을 실행한다.
+
+ # 데이터 무결성을 위한 제약조건
+테이블에 부적절한 자료가 입력되는 것을 방지하기 위해 테이블을 생성할 때, 각 컬럼에 대해서 정의하는 여러 가지 규칙이다.
+무결성 : 데이터베이스 내에 있는 데이터의 정확성 유지
+제약조건 : 바람직하지 않은 데이터가 저장되는 것을 방지하는 것
+제약조건 5가지
+ - NOT NULL    : NULL을 허용하지 않음
+ - UNIQUE      : 중복된 값을 허용하지 않고, 항상 유일한 값을 갖도록 함
+ - PRIMARY KEY : NULL을 허용하지 않고, 중복된 값도 허용하지 않음. NOT NULL 조건과 UNIQUE 조건을 결합한 형태
+ - FOREIGN KEY : 참조되는 테이블의 컬럼의 값이 존재하면 허용
+ - CHECH       : 저장 가능한 데이터 값이 범위나 조건을 지정하여, 설정한 값만을 허용
+
+ # NOT NULL 제약조건
+특정 컬럼은 반드시 값이 입력되도록 필수 입력 컬럼으로 지정하는 것이다.
+
+ # UNIQUE 제약조건
+특정 컬럼에 대해 자료가 중복되지 않게 하는 것이다.(지정된 컬럼에는 유일한 값만 저장되게 하는 것이다.)
+UNIQUE는 NULL값을 예외로 간주하여 중복되어 저장할 수 있다.
+ - NULL값도 입력되지 않게 제한하려면, 테이블 생성시 EMPNO NUMBER(4) UNIQUE NOT NULL 처럼 두 가지 제약조건을 기술하면 된다.
+
+ # 컬럼 레벨로 제약조건 설정하기
+제약 조건에 위배하면 오류 메시지에 제약 조건명만 출력되는데 오라클이 부여한 제약 조건명으로는 어떤 제약 조건을 위반했는지 알 수 없기 때문에 DBA_CONSTRAINTS 데이터 딕셔너리를 검색하여 어떤 제약 조건인지 확인하면 된다.
+ - 만일 사용자가 의미 있게 제약 조건명을 명시한 경우 제약 조건명만으로도 어떤 제약 조건을 위배했는지 알 수 있게 된다.
+
+ # PRIMARY KEY
+컬럼명과 자료형을 기술한 다음 PRIMARY KEY를 기술하면 된다.
+기본키(PRIMARY KEY) 제약조건 = NOT NULL 제약조건 + UNIQUE 제약조건
+
+ # FOREIGN KEY
+- 참조무결성
+   -> 테이블 사이의 관계에서 발생하는 개념이다.
+   -> 두 테이블 사이의 주종관계(주체가 되는 테이블(부모 테이블)과 종속이 되는 테이블(자식테이블)에 의해서 결정된다.
+   -> 주체관계가 애매모호한 경우 '어느 테이블의 데이터가 먼저 정의되어야 하는가?'가 기준이 된다. 먼저 정의되어야 하는 테이블이 부모 테이블, 나중에 정의되어야 하는 테이블이 자식 테이블이 된다.
+- 사원 테이블(자식 테이블)의 부서 번호는 반드시 부서 테이블(부모 테이블)에 존재하는 부서 번호만 입력해야 한다. 사원 테이블이 부서 테이블의 부서 번호를 참조 가능하도록 하는 것이다.
+
+ # 가상 테이블인 뷰
+뷰(VIEW)
+ - 물리적인 테이블을 근거한 논리적인 가상 테이블
+ - 테이블에는 데이터가 있지만 뷰에는 데이터가 없고 SQL만 저장되어 있다.
+ - 사용자가 해당 VIEW에 접근하면, 그때 VIEW에 들어있던 SQL이 수행되어 결과를 가져오는 것이다.
+
+뷰를 CREATE VIEW로 생성하되 AS 다음은 자주 사용되는 SELECT문을 서브 쿼리문 형태로 기술한다.
+  ex) CREATE VIEW EMP_VIEW30 AS SELECT EMPNO, ENAME, DEPTNO FROM EMP_COPY WHERE DEPTNO=30;
+
+뷰를 생성할 때 사용하는 옵션
+ - CREATE OR REPLACE VIEW : 같은 이름의 VIEW가 있을 경우 삭제 후 다시 생성
+ - FORCE                  : 기본 테이블의 존재 여부에 상관없이 VIEW를 생성
+ - WITH CHECK OPTION      : 주어진 제약 조건에 맞는 데이터만 입력 및 수정을 허용
+ - WITH READ ONLY         : SELECT만 가능한 읽기 전용 뷰를 생성
+
+뷰를 사용하는 이유
+ - 복잡하고 긴 쿼리문을 뷰로 정의하면, 접근을 단순화시킬 수 있다.
+ - 보안에 유리하다.
+   -> 뷰는 물리적으로 데이터를 저장하지 않고 CREATE VIEW 명령어로 뷰를 정의할 때, AS절 다음에 기술한 쿼리문장 자체를 저장한다.
+   -> 뷰를 삭제한다는 것은 DBA_VIEWS 데이터 딕셔너리에 저장되어 있는 뷰의 정의를 삭제하는 것이다. 뷰를 삭제해도 뷰를 정의한 기본 테이블의 구조나 데이터에는 전혀 영향을 주지 않음!
+
+ # 단순 뷰와 복합 뷰
+단순 뷰(Simple View)
+ - 하나의 테이블로 생성
+ - 그룹 함수의 사용이 불가능
+ - DISTINCT 사용이 불가능
+ - DML 사용이 가능
+   -> 단순 뷰에서 DML 명령어 사용이 불가능한 경우
+     - 뷰 정의에 포함되지 않은 컬럼 중에 기본 테이블의 컬럼이 NOT NULL 제약 조건이 지정되어 있는 경우 INSERT문 사용이 불가능하다. 왜냐하면 뷰에 대한 INSERT문은 기본 테이블에 NULL값을 입력하는 형태가 되기 때문이다.
+	 - SAL*12와 같이 산술 표현식으로 정의된 가상 컬럼이 뷰에 정의되면, INSERT나 UPDATE가 불가능하다.
+	 - DISTINCT를 포함한 경우에도 DML 명령 사용이 불가능하다.
+	 - 그룹 함수나 GROUP BY절을 포함한 경우 DML 명령 사용이 불가능하다.
+복합 뷰(Complex View)
+ - 여러 개의 테이블로 생성
+ - 그룹 함수의 사용이 가능
+ - DISTINCT 사용이 가능
+ - DML 사용이 불가능
+
+ # WITH CHECK OPTION / WITH READ ONLY 옵션 알아보기
+WITH CHECK OPTION
+ - 조건 컬럼값을 변경하지 못하게 하는 옵션이다.
+WITH READ ONLY
+ - 기본 테이블의 어떤 컬럼에 대해서도 뷰를 통한 내용 수정을 불가능하게 만드는 옵션이다.
+
+ # 뷰를 이용하여 Top-N 구하기
+ROWID : 테이블의 특정 레코드를 랜덤하게 접근하기 위한 논리적인 주소값이다.
+ROWNUM : 각 행에 대한 일련번호이다.
+
+ # 인덱스
+SQL 명령문의 처리 속도를 향상시키기 위해서 컬럼에 대해서 생성하는 오라클 객체이다.
+인덱스의 장점
+ - 검색 속도가 빨라진다.
+ - 시스템에 걸리는 부하를 줄여서 시스템 전체 성능을 향상시킨다.
+인덱스의 내부 구조는 B-트리 형식으로 구성되어 있다.
+인덱스의 단점
+ - 인덱스를 생성하는데 시간이 걸린다.
+ - 인덱스를 위한 추가적인 공간이 필요하다.
+ - 데이터의 변경 작업(INSERT/UPDATE/DELETE)이 자주 일어날 경우에는 오히려 성능이 저하된다.
+인덱스는 기본키나 유일키와 같은 제약 조건을 지정하면 따로 인덱스를 생성하지 않더라도 자동으로 생성된다.
+인덱스 객체에 대한 정보를 확인하는 방법
+ - DBA_INDEXES, DBA_IND_COLUMNS 데이터 딕셔너리 뷰에서 확인 가능하다.
+
+인덱스의 종류
+ - 고유 인덱스(Unique Index)             : 유일한 값을 갖는 컬럼에 대해서만 인덱스를 설정할 수 있음
+ - 비고유 인덱스(NonUnique Index)        : 중복된 데이터를 갖는 컬럼에 대해서 생성하는 인덱스
+ - 단일 인덱스(Single Index)             : 한 개의 컬럼으로 구성한 인덱스
+ - 결합 인덱스(Composite Index)          : 두 개 이상의 컬럼으로 구성한 인덱스
+ - 함수 기반 인덱스(Function Based Index) : 수식이나 함수를 적용하여 만든 인덱스
+
+CTAS를 이용하여 새로운 테이블을 생성하면 제약조건은 복사되지 않는다.
+(기존 테이블에는 인덱스가 존재하지만 새 테이블에는 인덱스가 존재하지 않는다.)
+
+ # 인덱스 사용여부 판단 및 재생성하기
+인덱스는 검색 시간을 줄인다고 하였으나 무조건 인덱스를 사용한다고 해서 검색 속도가 빨라지는 것은 아니다. 계획성 없이 너무 많은 인덱스를 지정하면, 오히려 성능을 저하시킬 수 있다.
+ - 인덱스를 사용해야 하는 경우
+   -> 테이블에 행의 수가 많을 때
+   -> WHERE 문에 해당 컬럼이 많이 사용될 때
+   -> 검색 결과가 전체 데이터의 2%~4% 정도일 때
+   -> JOIN에 자주 사용되는 컬럼이나 NULL을 포함하는 컬럼이 많은 경우
+ - 인덱스를 사용하지 말아야 하는 경우
+   -> 테이블에 행의 수가 적을 때
+   -> WHERE 문에 해당 컬럼이 자주 사용되지 않을 때
+   -> 검색 결과가 전체 데이터의 10%~15% 이상일 때
+   -> 테이블에 DML 작업이 많은 경우 즉, 입력 수정 삭제 등이 자주 일어날 때
+
+인덱스가 생성된 후에 새로운 행이 추가, 삭제, 변경되는 경우
+ - 본 테이블에서 추가, 삭제, 갱신 작업이 일어날 때, 해당 테이블에 걸린 인덱스의 내용도 함께 수정되어야 한다.
+ - 인덱스가 없을때보다 DML 작업이 무거워진다.
+ - 고로 인덱스는 가끔 한번씩 재생성을 해주어야만 빠른 효율을 누릴 수 있다.
+  ex) ALTER INDEX IDX_EMP01_DEPTNO REBUILD;
+
+테이블에서 컬럼의 데이터가 입력, 수정, 삭제될 경우, 해당 컬럼에 의해 생성된 인덱스에 대해서 재구성해야 하는 이유
+ - 인덱스를 구성하는 B*트리에서는 인덱스 키에 의해서 일정한 정렬 순서를 유지하고 있다.
+ - 새로운 노드가 추가되면, 이 노드에 의해서 인덱스의 정렬 순서가 재구성되어야만 인덱스 키의 정렬 순서를 유지할 수 있기 때문이다.
+
+ # Invisible index
+11g에서 인덱스를 실제 삭제하기 전에 '사용 안함'상태로 만들어서 테스트해 볼 수 있는 기능을 제공하는 인덱스이다.
+인덱스가 많은 경우 DML문장에 나쁜 영향을 주기 때문에 사용하지 않는 인덱스는 삭제해 주어야 한다.
+ - 문제는 해당 인덱스를 삭제하려고 했을 때, 정말 사용하는지 사용하지 않는 것인지를 정확하게 알아야 한다.
+ - 모니터링 기간이 잘못 되었다든지 해서 인덱스를 삭제했는데, 나중에 생각지도 못했던 부분에서 문제가 발생할 수 있다. 그래서 Invisible index를 사용하는 것이다.
+
+ # 데이터베이스 보완을 위한 권한
+데이터베이스를 위한 권한은 시스템 권한과 객체 권한으로 나뉜다.
+ - 시스템 권한(System Privileges) : 사용자의 생성과 제거, DB 접근 및 각종 객체를 생성할 수 있는 권한 등 주로 DBA에 의해 부여
+ - 객체 권한(Object Privileges) : 객체를 조작할 수 있는 권한
+
+ - 데이터베이스 관리자가 가지고 있는 시스템 권한
+------------------------------------
+  시스템 권한        ㅣ       기능
+------------------------------------
+CREATE USER        ㅣ 새롭게 사용자를 생성하는 권한
+DROP USER          ㅣ 사용자를 삭제하는 권한
+DROP ANY TABLE     ㅣ 임의의 테이블을 삭제할 수 있는 권한
+QUERY REWRITE      ㅣ 함수 기반 인덱스를 생성하는 권한
+BACK UP ANY TABLE  ㅣ 임의의 테이블을 백업할 수 있는 권한
+  
+ - 데이터베이스를 관리하는 권한으로 시스템 관리자가 사용자에게 부여하는 권한
+------------------------------------
+  시스템 권한        ㅣ       기능
+------------------------------------
+CREATE SESSION     ㅣ 데이터베이스에 접속할 수 있는 권한
+CREATE TABLE       ㅣ 사용자 스키마에서 테이블을 생성할 수 있는 권한
+CREATE VIEW        ㅣ 사용자 스키마에서 뷰를 생성할 수 있는 권한
+CREATE SEQUENCE    ㅣ 사용자 스키마에서 시퀀스를 생성할 수 있는 권한
+CREATE PROCEDURE   ㅣ 사용자 스키마에서 함수를 생성할 수 있는 권한
+
+ # 사용자 생성하기
+CREATE USER USER_ID IDENTIFIED BY PASSWORD;
+
+ # 권한을 부여하는 GRANT 명령어
+PUBLIC란 DB 내에 있는 모든 계정을 의미한다.
+GRANT CREATE SESSION TO USER_ID;
+
+ # 객체 권한
+특정 객체에 조작을 할 수 있는 권한
+객체의 소유자는 객체에 대한 모든 권한을 가진다.
+사용자에게 시스템 권한으로 WITH ADMIN OPTION과 함께 부여하면 그 사용자는 데이터베이스 관리자가 아니더라도 부여받은 시스템 권한을 다른 사용자에게 부여할 수 있는 권한도 함께 부여받게 된다.
+
+     권한   ㅣ TABLE ㅣ VIEW ㅣ SEQUENCE ㅣ PROCEDURE
+----------------------------------------------------
+ALTER      ㅣ   V                 V
+DELETE     ㅣ   V        V                    V
+EXECUTE    ㅣ
+INDEX      ㅣ   V
+INSERT     ㅣ   V        V
+REFERENCES ㅣ   V
+SELECT     ㅣ   V        V
+UPDATE     ㅣ   V        V
+
+사용자 권한과 관련된 데이터 딕셔너리 중에서 DBA_TAB_PRIVS_MADE 데이터 딕셔너리는 현재 사용자가 다른 사용자에게 부여한 권한 정보를 알려준다.
+만일 자신에게 부여된 사용자 권한을 알고싶을 때는 DBA_TAB_PRIVS_RECD 데이터 딕셔너리를 조회하면 된다.
+
+REVOKE : 사용자에게 부여한 객체 권한을 데이터베이스 관리자나 객체 소유자로부터 회수하기 위한 명령어이다.
+WITH GRANT OPTION : 사용자에게 객체 권한을 WITH GRANT OPTION과 함께 부여하면 사용자는 객체를 접근할 권한을 부여받으면서 그 권한을 다른 사용자에게 부여할 수 있는 권한도 함께 부여받게 된다.
+
+ # 시퀀스와 동의어
+오라클에서는 행을 구분하기 위해서 기본키를 두는데 기본키는 중복값이 아닌 항상 유일한 값을 가져야 한다.
+ - 기본키가 유일한 값을 갖도록 사용자가 직접 값을 생성해내려면 사용자 입장에서 부담이 너무 크다. 그래서 기본키를 시퀀스로 사용하면 좋다.
+
+시퀀스
+ - 테이블 내의 유일한 숫자를 자동으로 생성하는 자동 번호 발생기이다.
+ - 유일한 값을 생성해주는 Oracle 객체이다.
+ - 기본키와 같이 순차적으로 증가하는 컬럼을 자동적으로 생성해준다.
+ - START WITH
+ - INCREMENT BY
+ - MAXVALUE
+ - MINVALUE
+ - CYCLE
+ - CACHE
+
+동의어
+ - 사용자가 다른 사용자의 객체를 참조할 때 [사용자ID].[테이블명]과 같이 길게 표시해야 하기 때문에 이해하기가 어렵고 코딩이 불편하다. 이러한 문제점을 해결하기 위해서 동의어(SYNONYM)라는 객체를 사용한다.
+ - 동의어를 정의하면 긴 이름대신 간단한 이름으로 접근할 수 있다.
+ - 개별 사용자를 대상으로 한 비공개 동의어와 전체 사용자를 대상으로 하는 공개 동의어가 있다.
+ - 예를들어 DUAL 테이블은 SYS가 소유하는 테이블이므로 다른 사용자가 DUAL 테이블에 접근하려면 SYS.DUAL로 표현해야 하는 것이 원칙이다. 그럼에도 불구하고 모든 사용자가 SYS.을 생략하고, DUAL이라고 간단하게 사용할 수 있었던 것은 공개 동의어로 지정되어 있기 때문이다.
+
+동의어 생성 명령어 : CREATE SYNONYM
+동의어 제거 명령어 : DROP SYNONYM
+
+
+
+
